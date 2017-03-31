@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<center><h2 style="background-color:#00476B; color:white">  Contact </h2></center>
+
+
+
+<div class="col-xs-12 col-sm-5 col-sm-offset-4">
+
+<div class=surface>
+ 
+<form id='thanks' method='post' action='thanks' enctype="multipart/form-data"> {% csrf_token %}
+	<h2>Name</h2>
+	<input type="text" name="name" >
+	<br></br>
+	<h2>Email Address</h2>
+	<input type="email" name="email" required>
+	<br></br>
+	<h2>Message</h2>
+	<textarea name="message"  class="form-control" rows="10" style="min-width: 100%"></textarea>
+	<br></br>
+	<input type="submit" value="Send Form" class="btn" >
+</form>
+<br></br>
+<br></br>
+</div>
+</div>
+
+
+{% endblock %}
+

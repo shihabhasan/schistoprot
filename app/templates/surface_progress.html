@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load staticfiles %}
+<h2 style="background-color:#00476B; color:white"> <center> Surface protein prediction for: {{ task_id }} </center> </h2>
+
+<script>
+window.setTimeout("document.location.reload();", 5000);
+</script>
+<p>This page will be redirected to <a href="http://schistoprot.net/surface_results/{{ task_id }}"><u>http://schistoprot.net/surface_results/{{ task_id }}</u></a> when finished.</p>
+<p>You can save this link to access the result when finished. You can close the window if you don't want to wait. The result will be also sent by email (if provided) and you can access the result when finished. Please check in email spam folder as well.</p>
+
+<br></br>
+<div class=disclaimer>
+ <center> 
+
+<br></br><br></br>
+ <img src="{% static 'image/spinner.gif' %}" alt="processing" height="80"></center> 
+ <br></br>
+</div>
+
+{% endblock %}

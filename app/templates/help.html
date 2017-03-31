@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class=output>
+<p> 
+<h2 style="background-color:#00476B; color:white"> <center> Instructions </center> </h2> 
+</p>
+{% load staticfiles %}
+<p>
+<h4>
+SchistoProt is a supervised machine learning based tool which uses 16 supervised machine learning techniques using <a href="http://scikit-learn.org">Scikit-Learn</a> to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory peptides. 
+These 16 techniques are:
+<br></br>
+<div class="col-xs-12 col-sm-6">
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">1. Gradient Boosting Machine (GBM)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC">2. Support Vector Machine with Radial Bias Function (RBF SVM)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC">3. SVMs with linear kernel (Linear SVM)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">4. Decision Tree</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier">5. Random Forest</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">6. Ada Boost</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB">7. Gaussian Naive Bayes (GNB)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis">8. Linear Discriminant Analysis (LDA)</a></br>
+</div>
+<div class="col-xs-12 col-sm-6">
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html">9. Ridge regression</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier">10. Stochastic gradient descent (SGD)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html#sklearn.linear_model.Perceptron">11. Perceptron</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier">12. Passive aggressive</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB">13. Bernoulli Naive Bayes (BNB)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB">14. Multinomial Naive Bayes (MNB)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier">15. Nearest Centroid method</a></br>
+<br><a href="http://scikit-learn.org/dev/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier">16. Multi-layer Perceptron (MLP)</a></br>
+</div>
+</p>
+<div class="col-xs-12 col-sm-12">
+<br></br>
+Generated predictions are stored in a database, which facilitates the rapid reuse of predictions without rerunning the time-consuming machine learning classifications.
+This saves considerabe runtime if the same sequences are uploaded multiple times, e.g. by different users. 
+SchistoProt predictions are highly valuable for identifying genes important for host-parasite interaction and the discovery of novel drug and vaccine targets.
+</div>
+</h4>
+
+<center> <img src="{% static 'image/workflow.gif' %}" alt="work flow" width ="70%"></center>
+
+
+<br></br>
+<h1>Data & Source Code</h1>
+<h4>The data set can be downloded from <a href="{% static 'data.zip' %}"><i class="fa fa-download fa-2x"></i>&nbsp;here</a> and the source codes of SchistoProt can be found on <a href="https://github.com/shihabhasan/schistoprot.git"><i class="fa fa-github fa-2x"></i>&nbsp;GitHub</a>.</h4>
+<br></br>
+
+<h1>Input options</h1>
+<h4>
+SchistoProt takes the fasta formatted text or file. File extension can be any type (eg. .txt, .fas, .fasta etc.). File extension does not have any effect on SchistoProt. SchistoProt can not predict the protein class if the protein sequence is less than 20 amino acids.
+<br></br>
+<center> <img src="{% static 'image/gui.png' %}" alt="gui" width ="70%"></center>
+<br></br><br></br>
+
+If a valid email address is provided, an email containing the output result text file will be sent automatically. 
+So for large dataset, it is better to provide the email address.
+</h4>
+<br></br>
+<h1>Output</h1>
+<h4>
+After completing the task, a result page with a prediction table is appeared. The result is also sent by email if a valid email address is provided during data submission. 
+<br></br>
+The prediction table is a list of Sequence ID of test protein sequence, category prediction, score.
+<br></br>
+<center> <img src="{% static 'image/prediction.gif' %}" alt="Prediction Table" width ="70%"></center>
+<br></br><br></br>
+The all methods table is a list of Sequence ID of test protein sequence, name of the machine learning technique, category prediction, decision score and probability.
+<br></br>
+<center> <img src="{% static 'image/methods.gif' %}" alt="Prediction Table" width ="70%"></center>
+<br></br><br></br>
+The feature table is a list of Sequence ID of test protein sequences and the values for 480 features.
+<br></br>
+<center> <img src="{% static 'image/feature.gif' %}" alt="Features Table" width ="70%"></center>
+<br></br><br></br>
+Plots and Charts can be drawn from 'Draw Charts' section. Click on a row of the Prediction table, then click any of the buttons from 'Draw Charts' section to draw plot.
+<br></br>
+<center> <img src="{% static 'image/charts.gif' %}" alt="Charts" width ="100%"></center>
+<br></br>
+
+
+</h4>
+</div>
+
+<br></br><br></br>
+<div class=disclaimer >
+<b>Lutz Krause</b>
+<br>Computational Medical Genomics Group
+<br>The University of Queensland Diamantina Institute
+<br>Translational Research Institute
+<br>37 Kent Street, Woolloongabba, QLD 4102, Australia 
+<br>Email: l.krause@uq.edu.au
+</br>
+<br></br>
+<b>Shihab Hasan</b>
+<br>QIMR Berghofer Medical Research Institute
+<br>300 Herston Road, Herston, QLD 4006, Australia
+<br>Email: shihab.hasan@uqconnect.edu.au
+</br>
+</div>
+
+{% endblock %}

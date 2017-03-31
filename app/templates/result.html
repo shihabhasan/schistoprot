@@ -1,0 +1,40 @@
+<!doctype html>
+
+<title>SchistoProt</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css')}}">
+
+
+
+<div class=page>
+  <h1><a href="http://127.0.0.1:5000">SchistoProt</a></h1>
+  <h2>Prediction of schistosoma proteins </h2>
+
+
+
+
+
+<div class=surface_output>
+<p> 
+<h2 style="background-color:#00476B; color:white"> <center> Schistosoma protein prediction result </center> </h2> 
+</p>
+
+<!--- OUTPUT TABLE --->
+
+<center>
+<table class="gridtable">
+<tr>
+	<td><b>Protein ID</b></td>
+	<td><b>Prediction</b></td>
+</tr>
+{% for line in result%}
+
+<tr>
+	<td>{{line.split("\t")[0]}}</td>
+	<td>{{line.split("\t")[1]}}</td>
+</tr>
+{% endfor %}
+</table>
+</center>
+</div>
+</div>
+

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<br></br>
+
+
+<center><h1><font color="red">Please check your sequence FASTA format.  Please use standard 20 letters amino acids code for the FASTA format.</font></h1></center>
+<br></br>
+<strong>FASTA format:</strong><br>
+A sequence in FASTA format begins with a single-line description, followed by lines of sequence data. 
+The description line is distinguished from the sequence data by a greater-than (">") symbol in the first column. 
+The word following the ">" symbol is the identifier of the sequence, and the rest of the line is the description (both are optional). 
+There should be no space between the ">" and the first letter of the identifier. 
+The sequence ends if another line starting with a ">" appears; this indicates the start of another sequence. 
+<br></br>
+<br>A simple example of one sequence in FASTA format:</br>
+
+<pre><code>
+>gi|171473970|gb|ACB47094.1| SJCHGC02123 protein [Schistosoma japonicum]
+MELTLSQQFWTKLFFLLNSLFGIFGIVLLAFGIKGYDILVKFNIILQGTIPVIFPITIFLGCFLLLSTLIGFIGLWKPKQFIVIMHIAIVFIAVLGEICIASITISSIDQVSSIINTNN<br>
+</code></pre>
+<br>In this example, "gi|171473970|gb|ACB47094.1|" is the ID of the sequence.
+<br></br>
+
+<strong>Valid inputs:</strong>
+<pre><code>
+>ID1
+MKMRFFSSPCGKAAVDPADRCKEVQQIRDQHPSKIPVIIERYKGEKQLPV<br>
+</code></pre>
+or
+<pre><code>
+>ID2 decription
+MSELVKIIRRRLQLNPTQAFFLLVNQHSMVSVSTPIADIYEQEKDEDGF<br>
+</code></pre>
+or
+<pre><code>
+>gi|28948613|pdb|1M9A|A Chain A, Crystal Structure Of The 26 Kda Glutathione S-transferase From Schistosoma Japonicum Complexed With S-hexylglutathione
+MSPILGYWKIKGLVQPTRLLLEYLEEKYEEHLYERDEGDKWRNKKFELGLEFPNLPYYIDGDVKLTQSMAIIRYIADKHNMLGGCPKERAEISMLEGAVLDIRYGVSRIAYSKDFETLKVDFLSKLPEMLKMFEDRLCHKTYLNGDHVTHPDFMLYDALDVVLYMDPMCLDAFPKLVCFKKRIEAIPQIDKYLKSSKYIAWPLQGWQATFGGGDHPPK<br>
+</code></pre>
+or
+<pre><code>
+>gi|56755295|gb|AAW25827.1| SJCHGC06356 protein [Schistosoma japonicum]
+MFRKYIETENIQTKHIKTISHNSINMEIPRSFDARYHWINCSTIRQIHDESLCRADWAIATVDSISDRIC
+IRSNGRISVQLSARDAISCGFSPGCFHGSEVEVLVYWITYGIVTGGSYEDQSGCQPYPLPKCSYHPESRF
+LDCNNNTFEFPQCTNECQDGYNKTYDDDKFYGERIYNVYGTQEDIQKEILMNGPVIASISVNTDFLVYKS
+GVYLPTPRSRNLGWITLRIIGWGYEGKIPYWLCANSWNEEWGANGYVKIQRGVQAGYIESYVRAPIPKM<br>
+</code></pre>
+or
+<pre><code>
+>ID1
+MKMRFFSSPCGKAAVDPADRCKEVQQIRDQHPSKIPVIIERYKGEKQLPV
+>ID2 decription
+MSELVKIIRRRLQLNPTQAFFLLVNQHSMVSVSTPIADIYEQEKDEDGF
+>gi|28948613|pdb|1M9A|A Chain A, Crystal Structure Of The 26 Kda Glutathione S-transferase From Schistosoma Japonicum Complexed With S-hexylglutathione
+MSPILGYWKIKGLVQPTRLLLEYLEEKYEEHLYERDEGDKWRNKKFELGLEFPNLPYYIDGDVKLTQSMAIIRYIADKHNMLGGCPKERAEISMLEGAVLDIRYGVSRIAYSKDFETLKVDFLSKLPEMLKMFEDRLCHKTYLNGDHVTHPDFMLYDALDVVLYMDPMCLDAFPKLVCFKKRIEAIPQIDKYLKSSKYIAWPLQGWQATFGGGDHPPK
+>gi|56755295|gb|AAW25827.1| SJCHGC06356 protein [Schistosoma japonicum]
+MFRKYIETENIQTKHIKTISHNSINMEIPRSFDARYHWINCSTIRQIHDESLCRADWAIATVDSISDRIC
+IRSNGRISVQLSARDAISCGFSPGCFHGSEVEVLVYWITYGIVTGGSYEDQSGCQPYPLPKCSYHPESRF
+LDCNNNTFEFPQCTNECQDGYNKTYDDDKFYGERIYNVYGTQEDIQKEILMNGPVIASISVNTDFLVYKS
+GVYLPTPRSRNLGWITLRIIGWGYEGKIPYWLCANSWNEEWGANGYVKIQRGVQAGYIESYVRAPIPKM<br>
+</code></pre>
+{% endblock %}
+

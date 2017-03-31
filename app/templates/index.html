@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+  
+  
+<div align="justify">
+<h4>
+SchistoProt is a schistosome specific machine-learning classifier for the identification of surface and secreted proteins. 
+</h4>
+<h6>
+The classifier uses 16 supervised machine learning techniques to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory proteins. Positive training sets have been extracted from literatures. 
+As a negative training set (non-surface and non-secretory proteins), nuclear and histone related proteins were collected from the NCBI non-redundant proteins database. Hypothetical or non-biologically validated proteins have been excluded to obtain a high-quality and reliable training set. 
+Recently, it has been demonstrated that such a genus specific classifier can significantly increase prediction accuracy. 
+The genus specific classifier predictions are highly valuable for identifying genes important for host-parasite interaction and the discovery of novel drug and vaccine targets.
+</h6>
+</div>
+<br> </br> 
+
+<div align="center">
+<h2>Select the application</h2>
+<br> </br> 
+<ul>
+<liBig><a href="surface_app" class="roundBig blue">SURFACE<span class="roundBig">Predicts surface proteins or not</span></a></liBig>
+<liBig><a href="secretory_app" class="roundBig red">SECRETORY<span class="roundBig">Predicts secretory proteins or not</span></a></liBig>
+</ul> 
+</div>
+<br> </br> <br> </br> 
+
+<div class="disclaimer bg-info" style="padding:10px">
+<b>Disclaimer:</b>
+<br>This tool is provided free of charge and for research purposes only. It is the responsibility of the user to verify the accuracy, completeness, timeliness, quality or suitability for a particular use of the tool provided on this site. The University of Queensland (“UQ”) make no claims , guarantees or warranties about the accuracy, completeness, timeliness, quality or suitability for a particular use of the information/software provided through this website. In particular, UQ does not warrant or guarantee that the tool will be uninterrupted, or free from error or viruses and accepts no liability for any loss of damage suffered by the user. UQ disclaims any and all liability for any claims or damages (including without limitation indirect or consequential loss or damage or any loss of damage arising whatsoever from loss of data or profit arising out of or in connection with the use of this website) that may result from providing the website or the information/software within. The user of this information/software or website assumes all liability and waives any and all claims or causes of action against UQ for all uses of and reliance on the information/software. In addition, UQ reserves the right to modify the tool at any time without notice and in its absolute discretion.
+</br>
+</div>
+
+<script>
+// for diverse slogans
+    $(function(){
+        $(".typed_element").typed({
+            strings: ["16 machine learning techniques", "schistosome specific classifier", "highly accurate prediction", 
+					"interactive plots", "features table", "easy-to-use"],
+            typeSpeed: 50,
+			loop: true
+        });
+    });
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93438204-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+{% endblock %}
+

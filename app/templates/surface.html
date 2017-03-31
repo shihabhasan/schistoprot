@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+  
+<center><font size="20" color="red">{{ message }}</font></center>
+
+<div class="col-xs-12 col-sm-5 col-sm-offset-4">
+<div class=surface>
+<font color="#00476B" face="Copperplate Gothic Light" size="5"> <b> Surface Proteins </b> </font>
+
+<form name='surfaceForm' id='surfaceForm' method='post' action='surface' enctype="multipart/form-data"> {% csrf_token %} <!-- action is the URL you want to move to next-->
+    <p> <h3> Select features selection mode <i class="fa fa-info-circle fa-lg" title="More Conservation mode uses the features differentially distributed between 2 classes based on t-test. Less Conservation
+mode uses all available 481 features."></i></h3> </p>
+	<div class="onoffswitch">
+		<input type="checkbox" name="featureMode" class="onoffswitch-checkbox" id="featureMode" checked>
+		<label class="onoffswitch-label" for="featureMode">
+			<span class="onoffswitch-inner"></span>
+			<span class="onoffswitch-switch"></span>
+		</label>
+	</div>
+   <p>
+   <h3> Enter FASTA sequence(s) </h3> 
+   <textarea type='text' name='surface_sequences' id="surface_sequences" placeholder="FASTA sequence(s)" class="form-control" rows="12" style="min-width: 100%"> </textarea> 
+   </p>
+   <p> 
+   <h3> Or, Upload FASTA File </h3>  
+   <input type='file' name='surface_file'> 
+   </p>
+   <p>To get the result please enter your email address (optional): <input type="email" name="surface_email" placeholder="yourname@example.com"></p>
+   <p>To load example sequences, <a href="#" id='surface_load_example'>click here!</a></p>
+   <input type="reset" value="Reset" class="btn-primary" />
+   <p>
+   <br> </br> 
+   <input type='submit' value='Submit' class="surface_submit_button pull-right" /> <!-- value is the text that will appear on the button. --> 
+   <br> </br>
+   </p>
+</form>
+</div>
+</div>
+
+<!-- here comes the javascript -->
+<script type="text/javascript">
+document.getElementById("surface_load_example").onclick = function() {
+document.surfaceForm.surface_sequences.value = 
+'>gi|121698|sp|P15964.1|GST26_SCHMA\n'
++'MAPKFGYWKVKGLVQPTRLLLEHLEETYEERAYDRNEIDAWSNDKFKLGLEFPNLPYYIDGDFKLTQSMAIIRYIADKHNMLGACPKERAEISMLEGAVLDIRMGVLRIAYNKEYETLKVDFLNKLPGRLKMFEDRLSNKTYLNGNCVTHPDFMLYDALDVVLYMDSQCLNEFPKLVSFKKCIEDLPQIKNYLNSSRYIKWPLQGWDATFGGGDTPPK\n'
++'>gi|13021614|gb|AAK11492.1|U57714_1\n'
++'MSPSLVSDTQKHERGSHEVKIKHFSPYIAVCVTTFSLAFCCFMVHAAITRQPTHLLPFFFIQVFDLIICLIHILGFMSSTSDIRLVIHTKTGPIYIKSTGLTFIILSISCMMLAFKAYCLGMVWDCYKYLMLNRRGNLLDDWYSDQWGHLSTFWSLLRTGRNRGNNSIGNSGSPNEPNTRPRPDTITYDPANDLPKYEDILKIRNAYAPPPYYCSNTNGNVNTTTTDAVTTNTTITSATTANATTTITTNANTNTSTTTSVISPLTTTNKDDTQINNASSNAHSSC\n'
++'>gi|108861845|gb|ABG21824.1|\n'
++'MVDSSIFDEIPEEISAQLVSFSEATDDVEQLVNKISNFSNDSNTEVSDLDAIKTDLSLCYAFNALFFMYLRCNGVETQSHPIMQELDRVMNALKRCRSLVEKEGSARLKLDKEATTRFVKHALWKSAHTKTKKRRMDSST\n'
++'>gi|10953803|gb|AAG25601.1|AF297469_1\n'
++'GRGKGGKGLGKGGAKRHRKVLRDNIQGITKPAIRRLARRGGVKRISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYG'
+;
+}
+</script>
+
+
+{% endblock %}
+
