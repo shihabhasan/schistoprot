@@ -4,7 +4,7 @@
 
 <div class=surface_output">
 <p> 
-<h2 style="background-color:#00476B; color:white"> <center> Surface protein prediction result </center> </h2> 
+<h2 style="background-color:#00476B; color:white"> <center> Surface protein prediction result in {{ feature_mode }} mode </center> </h2> 
 </p>
 
 {% load my_templatetags %}
@@ -227,17 +227,17 @@ document.getElementById('selection').innerHTML = "Selected: " + seqID;
 <script>
   /* JAVASCRIPT CODE GOES HERE */
 ids={{ json_ids|safe }}
-if (ids.length == 48) {
+if (ids.length == 54) {
 diction = {
         {% for k, v in x3.iteritems %}
-        "{{ k }}": {{ v|Slice:48 }}{% if not forloop.last %},{% endif %}
+        "{{ k }}": {{ v|Slice:54 }}{% if not forloop.last %},{% endif %}
         {% endfor %}
     }
   /* STRIP PLOT */
 function strip_plot() {
 var trace1 = {
   x: ids,
-  y: {{ x1|Slice:48 }}, 
+  y: {{ x1|Slice:54 }}, 
   mode: 'markers',
   type: 'scatter',
   name: 'Surface Protein',
@@ -246,7 +246,7 @@ var trace1 = {
 
 var trace2 = {
   x: ids,
-  y: {{ x2|Slice:48 }}, 
+  y: {{ x2|Slice:54 }}, 
   mode: 'markers',
   type: 'scatter',
   name: 'Non-Surface Protein', 
@@ -273,14 +273,14 @@ Plotly.newPlot('myDiv', data, layout);
 function grouped_bar() {
 var trace1 = {
   x: ids, 
-  y: {{ x1|Slice:48 }}, 
+  y: {{ x1|Slice:54 }}, 
   name: 'Surface Protein', 
   type: 'bar'
 };
 
 var trace2 = {
   x: ids, 
-  y: {{ x2|Slice:48 }}, 
+  y: {{ x2|Slice:54 }}, 
   name: 'Non-Surface Protein', 
   type: 'bar'
 };
@@ -303,14 +303,14 @@ Plotly.newPlot('myDiv', data, layout);
 function stacked_bar() {
 var trace1 = {
   x: ids, 
-  y: {{ x1|Slice:48 }}, 
+  y: {{ x1|Slice:54 }}, 
   name: 'Surface Protein', 
   type: 'bar'
 };
 
 var trace2 = {
   x: ids, 
-  y: {{ x2|Slice:48 }}, 
+  y: {{ x2|Slice:54 }}, 
   name: 'Non-Surface Protein', 
   type: 'bar'
 };
@@ -333,7 +333,7 @@ Plotly.newPlot('myDiv', data, layout);
 function heat_map() {
 var data = [
   {
-  z: [{{ x1|Slice:48 }}, diction[tableData], {{ x2|Slice:48 }}], 
+  z: [{{ x1|Slice:54 }}, diction[tableData], {{ x2|Slice:54 }}], 
   x: ids,
   y: ['Surface', tableData, 'Non-Surface'],
   type: 'heatmap'

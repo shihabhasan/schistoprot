@@ -314,5 +314,5 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
     os.remove(filename+"_prediction.csv")
     os.remove(filename+"_result.csv")
     os.remove(filename+"_features.csv")
-
+    feature_mode = "Less Conservative"
     return (prediction_lines, header, lines, x1, x2, x3, fh, fd, feature_mode, json_ids, feature_cutoff)
