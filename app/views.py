@@ -36,7 +36,7 @@ def surface_app(request):
     return render_to_response('surface.html', context_instance=RequestContext(request))
 	
 def surface(request):
-    if request.POST['surface_sequences'].replace(" ","") == "" and request.POST['surface_file'].replace(" ","") == "":
+    if str(request.POST.get('surface_sequences')).replace(" ","") == "" and str(request.POST.get('surface_file')).replace(" ","") == "":
         message="Enter either fasta sequences in text area or upload fasta file!!!"
         return render_to_response('surface.html', { 'message': message }, context_instance=RequestContext(request))
 
@@ -46,11 +46,11 @@ def surface(request):
     else:
         feature_mode='lessConservative'
 
-    surface_email=request.POST['surface_email'].replace(" ","")
-    if request.POST['surface_sequences'].replace(" ","")!="":
+    surface_email=request.POST.get('surface_email').replace(" ","")
+    if request.POST.get('surface_sequences').replace(" ","")!="":
         filename="test_"+hashlib.md5(time.asctime()).hexdigest()
         file_in=open(filename, 'w')
-        file_in.write(request.POST['surface_sequences'].replace(" >",">"))
+        file_in.write(request.POST.get('surface_sequences').replace(" >",">"))
         file_in.close()
     else:
         file = request.FILES['surface_file']
@@ -81,7 +81,7 @@ def secretory_app(request):
    return render_to_response('secretory.html', context_instance=RequestContext(request))
 
 def secretory(request):
-    if request.POST['secretory_sequences'].replace(" ", "") == "" and request.POST['secretory_file'].replace(" ", "") == "":
+    if str(request.POST.get('secretory_sequences')).replace(" ", "") == "" and str(request.POST.get('secretory_file')).replace(" ", "") == "":
         message = "Enter either fasta sequences in text area or upload fasta file!!!"
         return render_to_response('secretory.html', {'message': message}, context_instance=RequestContext(request))
 
@@ -90,12 +90,12 @@ def secretory(request):
         feature_mode = 'moreConservative'
     else:
         feature_mode = 'lessConservative'
-    secretory_email=request.POST['secretory_email'].replace(" ","")
+    secretory_email=request.POST.get('secretory_email').replace(" ","")
 
-    if request.POST['secretory_sequences'].replace(" ","")!="":
+    if request.POST.get('secretory_sequences').replace(" ","")!="":
       filename="test_"+hashlib.md5(time.asctime()).hexdigest()
       file_in=open(filename, 'w')
-      file_in.write(request.POST['secretory_sequences'].replace(" >",">"))
+      file_in.write(request.POST.get('secretory_sequences').replace(" >",">"))
       file_in.close()
     else:
       file = request.FILES['secretory_file']
