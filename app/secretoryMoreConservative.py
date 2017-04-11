@@ -558,7 +558,7 @@ def run_secretory_more_conservative(filename, secretory_email, feature_mode, tas
     for line in lines:
         prediction_count=line.count('Non-Secretory Protein')
         l=line.split(",")
-        if prediction_count>8:
+        if prediction_count>7:
             if len(str(fasta_record[l[0]].seq))<20:
                 predicted = l[0] + ',Too short sequence,Unable to predict'
             else:

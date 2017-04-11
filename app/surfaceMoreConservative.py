@@ -562,7 +562,7 @@ def run_surface_more_conservative(filename, surface_email, feature_mode, task_id
     for line in lines:
         prediction_count=line.count('Non-Surface Protein')
         l=line.split(",")
-        if prediction_count>8:
+        if prediction_count>7:
             if len(str(fasta_record[l[0]].seq))<20:
                 predicted = l[0] + ',Too short sequence,Unable to predict'
             else:
