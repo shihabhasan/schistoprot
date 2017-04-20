@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^home$', views.home, name='home'),
     url(r'^help$', views.manual, name='help'),
+    url(r'^forum$', views.forum, name='forum'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^thanks$', views.thanks, name='thanks'),
     url(r'^surface_app$', views.surface_app, name='surface_app'),
