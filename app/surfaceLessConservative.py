@@ -297,7 +297,7 @@ def run_surface_less_conservative(filename, surface_email, feature_mode, task_id
 
     if surface_email!="":
         command = "echo 'Your SchistoProt surface protein prediction result is ready for job ID: "+task_id+"\n\n"+\
-                "You can view the interactive tables and plots by the link: http://schistoprot.net/surface_results/"+task_id+"\n\n\n"+\
+                "You can view the interactive tables and plots by the link: http://schistoprot.bioapps.org/surface_results/"+task_id+"\n\n\n"+\
                 "Kind regards,\n\nLutz Krause & Shihab Hasan\nComputational Medical Genomics Group, The University of Queensland Diamantina Institute' | mutt -a "+filename+"'_prediction.csv' -a "+filename+"'_result.csv' -a "+filename+"'_features.csv' -s 'SchistoProt Surface Protein Prediction Result for job ID '"+task_id+" -- "+surface_email
         subprocess.call(command, shell=(sys.platform!="Linux"))
 

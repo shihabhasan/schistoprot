@@ -587,7 +587,7 @@ def run_secretory_more_conservative(filename, secretory_email, feature_mode, tas
     
     if secretory_email!="":
         command = "echo 'Your SchistoProt secretory protein prediction result is ready for job ID: "+task_id+"\n\n"+\
-                "You can view the interactive tables and plots by the link: http://schistoprot.net/secretory_results/"+task_id+"\n\n\n"+\
+                "You can view the interactive tables and plots by the link: http://schistoprot.bioapps.org/secretory_results/"+task_id+"\n\n\n"+\
                 "Kind regards,\n\nLutz Krause & Shihab Hasan\nComputational Medical Genomics Group, The University of Queensland Diamantina Institute' | mutt -a "+filename+"'_prediction.csv' -a "+filename+"'_result.csv' -a "+filename+"'_features.csv' -s 'SchistoProt Secretory Protein Prediction Result for job ID '"+task_id+" -- "+secretory_email
         subprocess.call(command, shell=(sys.platform!="Linux"))
 
