@@ -65,7 +65,7 @@ def secondaryHelixPercentage(fileName):
     return_code = subprocess.call(command, shell=(sys.platform!="Linux"))
     garnierOut=open("garnier_"+fileName, "r")
     lines = garnierOut.readlines()
-    sec_str_percent = re.findall("\d+", lines[-10].strip())
+    sec_str_percent = re.findall("\d+.\d+", lines[-10].strip())
     if sec_str_percent ==[]:
         sec_helix_percent = "0"
     else:
@@ -79,7 +79,7 @@ def secondarySheetPercentage(fileName):
     return_code = subprocess.call(command, shell=(sys.platform!="Linux"))
     garnierOut=open("garnier_"+fileName, "r")
     lines = garnierOut.readlines()
-    sec_str_percent = re.findall("\d+", lines[-10].strip())
+    sec_str_percent = re.findall("\d+.\d+", lines[-10].strip())
     if sec_str_percent ==[]:
         sec_sheet_percent = "0"
     else:
@@ -93,7 +93,7 @@ def secondaryTurnsPercentage(fileName):
     return_code = subprocess.call(command, shell=(sys.platform!="Linux"))
     garnierOut=open("garnier_"+fileName, "r")
     lines = garnierOut.readlines()
-    sec_str_percent = re.findall("\d+", lines[-10].strip())
+    sec_str_percent = re.findall("\d+.\d+", lines[-10].strip())
     if sec_str_percent ==[]:
         sec_turns_percent = "0"
     else:
@@ -107,7 +107,7 @@ def secondaryCoilPercentage(fileName):
     return_code = subprocess.call(command, shell=(sys.platform!="Linux"))
     garnierOut=open("garnier_"+fileName, "r")
     lines = garnierOut.readlines()
-    sec_str_percent = re.findall("\d+", lines[-10].strip())
+    sec_str_percent = re.findall("\d+.\d+", lines[-10].strip())
     if sec_str_percent ==[]:
         sec_coil_percent = "0"
     else:
