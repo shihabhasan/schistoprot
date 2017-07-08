@@ -65,21 +65,8 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
     result_dict={}
     result_file=open(filename+"_result.csv", 'w')
     result_file.write("Sequence_ID,Gradient Boosting Machine (GBM) Prediction,GBM Decision Score,GBM Probability,\
-    Radial Bias Function (RBF) Support Vector Machine (SVM) Prediction,RBF SVM Decision Score,RBF SVM Probability,\
-    Linear Support Vector Machine (SVM) Prediction,Linear SVM Decision Score,Linear SVM Probability,\
-    Decision Tree Prediction,Decision Tree Decision Score,Decision Tree Probability,\
-    Random Forest Prediction,Random Forest Decision Score,Random Forest Probability,\
     AdaBoost Prediction,AdaBoost Decision Score,AdaBoost Probability,\
-    Gaussian Naive Bayes Prediction,Gaussian Naive Bayes Decision Score,Gaussian Naive Bayes Probability,\
-    Linear Discriminant Analysis Prediction,Linear Discriminant Analysis Decision Score,Linear Discriminant Analysis Probability,\
-    Ridge Regression Prediction,Ridge Regression Decision Score,Ridge Regression Probability,\
-    Stochastic Gradient Descent Prediction,Stochastic Gradient Descent Decision Score,Stochastic Gradient Descent Probability,\
-    Perceptron Prediction,Perceptron Decision Score,Perceptron Probability,\
-    Passive Aggressive Prediction,Passive Aggressive Decision Score,Passive Aggressive Probability,\
-    BernoulliNB Prediction,BernoulliNB Decision Score,BernoulliNB Probability,\
-    MultinomialNB Prediction,MultinomialNB Decision Score,MultinomialNB Probability,\
-    Nearest Centroid Prediction,Nearest Centroid Decision Score,Nearest Centroid Probability,\
-    Multi-layer Perceptron Prediction,Multi-layer Perceptron Decision Score,Multi-layer Perceptron Probability\n")
+    BernoulliNB Prediction,BernoulliNB Decision Score,BernoulliNB Probability\n")
 
     records=SeqIO.parse(filename, "fasta")
     for record in records:
@@ -108,7 +95,7 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
         train_negative_file="secretory_negative_less_conservative.csv"
         train_positive=np.genfromtxt(train_positive_file, delimiter=",")[1:,1:]
         train_negative=np.genfromtxt(train_negative_file, delimiter=",")[1:,1:]
-        
+
         train_data=np.concatenate((train_positive,train_negative))
         train_label=np.concatenate((np.ones(len(train_positive)), np.zeros(len(train_negative))))
         test_data=np.genfromtxt(parameters, delimiter=",")
@@ -126,45 +113,16 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
         #-------------------------------------------------------------
         
         gbm={}
-        svm_rbf={}
-        svm_linear={}
-        decision_tree={}
-        random_forest={}
         ada_boost={}
-        naive_bayes={}
-        lda={}
-        ridge_regression={}
-        sgd={}
-        perceptron={}
-        passive_aggressive={}
         bernoulliNB={}
-        multinomialNB={}
-        nearest_centroid={}
-        mlp={}
 
-        names = [gbm, svm_rbf, svm_linear, decision_tree, random_forest, ada_boost, \
-                 naive_bayes, lda, ridge_regression, sgd, perceptron, \
-                 passive_aggressive, bernoulliNB, multinomialNB, nearest_centroid, mlp]
-
-        k=int(round(np.sqrt(len(train_data)/2.0)))
+        names = [gbm, ada_boost, bernoulliNB]
 
         classifiers = [
             GradientBoostingClassifier(),
-            SVC(kernel='rbf', C=12.0, gamma=2.0, probability=True),
-            SVC(kernel="linear", C=100, probability=True),
-            DecisionTreeClassifier(max_depth=k),
-            RandomForestClassifier(max_depth=k, n_estimators=k, max_features=481),
             AdaBoostClassifier(),
-            GaussianNB(),
-            LinearDiscriminantAnalysis(),
-            RidgeClassifier(),
-            SGDClassifier(),
-            Perceptron(),
-            PassiveAggressiveClassifier(),
-            BernoulliNB(),
-            MultinomialNB(),
-            NearestCentroid(),
-            MLPClassifier()]
+            BernoulliNB()
+        ]
         
         #-------------------------------------------------------------
         for name, clf in zip(names, classifiers):
@@ -213,10 +171,7 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
         #-----------------
         j=0
         for seqID in seqID_list:
-            result_dict[seqID]=gbm[seqID]+"\t"+svm_rbf[seqID]+"\t"+svm_linear[seqID]+"\t"+decision_tree[seqID]+"\t"+\
-                                random_forest[seqID]+"\t"+ada_boost[seqID]+"\t"+naive_bayes[seqID]+"\t"+lda[seqID]+"\t"+\
-                                ridge_regression[seqID]+"\t"+sgd[seqID]+"\t"+perceptron[seqID]+"\t"+passive_aggressive[seqID]+"\t"+bernoulliNB[seqID]+"\t"+\
-                                multinomialNB[seqID]+"\t"+nearest_centroid[seqID]+"\t"+mlp[seqID]
+            result_dict[seqID]=gbm[seqID]+"\t"+ada_boost[seqID]+"\t"+bernoulliNB[seqID]
             p=SecretoryLessConservative(sequence=hashlib.md5(str(fasta_rec[seqID].seq)).hexdigest(), prediction=result_dict[seqID], features=str(param[j]), access=0, time=datetime.now())
             p.save()
             j=j+1
@@ -272,16 +227,16 @@ def run_secretory_less_conservative(filename, secretory_email, feature_mode, tas
     for line in lines:
         prediction_count=line.count('Non-Secretory Protein')
         l=line.split(",")
-        if prediction_count>7:
+        if prediction_count>1:
             if len(str(fasta_record[l[0]].seq))<20:
                 predicted = l[0] + ',Too short sequence,Unable to predict'
             else:
-                predicted=l[0]+',Non-Secretory Protein,'+str(16-prediction_count)+" / 16"
+                predicted=l[0]+',Non-Secretory Protein,'+str(3-prediction_count)+" / 3"
         else:
             if len(str(fasta_record[l[0]].seq))<20:
                 predicted = l[0] + ',Too short sequence,Unable to predict'
             else:
-                predicted=l[0]+',Secretory Protein,'+str(16-prediction_count)+" / 16"
+                predicted=l[0]+',Secretory Protein,'+str(3-prediction_count)+" / 3"
         prediction_file.write(predicted+"\n")
     f.close()
     fasta_record.close()

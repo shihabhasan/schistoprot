@@ -8,28 +8,18 @@
 {% load staticfiles %}
 <p>
 <h4>
-SchistoProt is a supervised machine learning based tool which uses 16 supervised machine learning techniques using <a href="http://scikit-learn.org">Scikit-Learn</a> to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory peptides. 
-These 16 techniques are:
+SchistoProt is a supervised machine learning based tool which uses 3 supervised machine learning techniques using <a href="http://scikit-learn.org">Scikit-Learn</a> to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory peptides. 
 <br></br>
 <div class="col-xs-12 col-sm-6">
+<br>Techniques used for Surface proteins classification:</br>
 <br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">1. Gradient Boosting Machine (GBM)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC">2. Support Vector Machine with Radial Bias Function (RBF SVM)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC">3. SVMs with linear kernel (Linear SVM)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">4. Decision Tree</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier">5. Random Forest</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">6. Ada Boost</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB">7. Gaussian Naive Bayes (GNB)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis">8. Linear Discriminant Analysis (LDA)</a></br>
-</div>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier">2. Random Forest</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB">3. Bernoulli Naive Bayes (BNB)</a></br></div>
 <div class="col-xs-12 col-sm-6">
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html">9. Ridge regression</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier">10. Stochastic gradient descent (SGD)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html#sklearn.linear_model.Perceptron">11. Perceptron</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier">12. Passive aggressive</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB">13. Bernoulli Naive Bayes (BNB)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB">14. Multinomial Naive Bayes (MNB)</a></br>
-<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier">15. Nearest Centroid method</a></br>
-<br><a href="http://scikit-learn.org/dev/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier">16. Multi-layer Perceptron (MLP)</a></br>
+<br>Techniques used for Secretory proteins classification:</br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">1. Gradient Boosting Machine (GBM)</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">2. Ada Boost</a></br>
+<br><a href="http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB">3. Bernoulli Naive Bayes (BNB)</a></br>
 </div>
 </p>
 <div class="col-xs-12 col-sm-12">
