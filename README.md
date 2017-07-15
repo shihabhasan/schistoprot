@@ -2,24 +2,19 @@
 
 SchistoProt is implemented in Python and the web-server is freely accessible at http://schistoprot.bioapps.org. Currently local installation is not available. Source code and documentation are available from [GitHub](https://github.com/shihabhasan/schistoprot).
 
-SchistoProt is a supervised machine learning based tool which uses 16 supervised machine learning techniques using Scikit-Learn to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory peptides. These 16 techniques are: 
+SchistoProt is a supervised machine learning based tool which uses 3 supervised machine learning techniques using Scikit-Learn to discriminate between i) surface and non-surface proteins and ii) secretory and non-secretory peptides. 
+
+Techniques used for Surface proteins classification:
 
 1. [Gradient Boosting Machine (GBM)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
-2. [Support Vector Machine with Radial Bias Function (RBF SVM)](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC)
-3. [SVMs with linear kernel (Linear SVM)](http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC)
-4. [Decision Tree](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
-5. [Random Forest](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier)
-6. [Ada Boost](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
-7. [Gaussian Naive Bayes (GNB)](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB)
-8. [Linear Discriminant Analysis (LDA)](http://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis)
-9. [Ridge regression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html)
-10. [Stochastic gradient descent (SGD)](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier)
-11. [Perceptron](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html#sklearn.linear_model.Perceptron)
-12. [Passive aggressive](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier)
-13. [Bernoulli Naive Bayes (BNB)](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB)
-14. [Multinomial Naive Bayes (MNB)](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB)
-15. [Nearest Centroid method](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier)
-16. [Multi-layer Perceptron (MLP)](http://scikit-learn.org/dev/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier)
+2. [Random Forest](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier)
+3. [Bernoulli Naive Bayes (BNB)](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB)
+
+Techniques used for Secretory proteins classification:
+
+1. [Gradient Boosting Machine (GBM)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
+2. [Ada Boost](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
+3. [Bernoulli Naive Bayes (BNB)](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB)
 
 Generated predictions are stored in a database, which facilitates the rapid reuse of predictions without rerunning the time-consuming machine learning classifications. This saves considerabe runtime if the same sequences are uploaded multiple times, e.g. by different users. SchistoProt predictions are highly valuable for identifying genes important for host-parasite interaction and the discovery of novel drug and vaccine targets.
 
