@@ -8,7 +8,7 @@ from django.template import RequestContext
 
 from app.tasks import run_surface, run_secretory
 
-
+from Bio import SeqIO
 
 def index(request):
     return render_to_response('index.html')
@@ -61,6 +61,15 @@ def surface(request):
         destination=open(filename,'wb+')
         for chunk in file.chunks():
             destination.write(chunk)
+    records = SeqIO.parse(filename, "fasta")
+    idList=[]
+    for record in records:
+        if record.id not in idList:
+            idList.append(record.id)
+        else:
+            message = "Duplicate sequence IDs are found in the fasta format. Sequence ID should be unique!!!"
+            return render_to_response('surface.html', {'message': message}, context_instance=RequestContext(request))
+
     task=run_surface.delay(filename, surface_email, feature_mode)
     task_id=task.id
     return HttpResponseRedirect('/surface_progress/'+task_id, { 'task_id': task_id })
@@ -106,6 +115,15 @@ def secretory(request):
       destination=open(filename,'wb+')
       for chunk in file.chunks():
          destination.write(chunk)
+    records = SeqIO.parse(filename, "fasta")
+    idList=[]
+    for record in records:
+        if record.id not in idList:
+            idList.append(record.id)
+        else:
+            message = "Duplicate sequence IDs are found in the fasta format. Sequence ID should be unique!!!"
+            return render_to_response('secretory.html', {'message': message}, context_instance=RequestContext(request))
+
     task=run_secretory.delay(filename, secretory_email, feature_mode)
     task_id=task.id
     return HttpResponseRedirect('/secretory_progress/'+task_id, { 'task_id': task_id })
